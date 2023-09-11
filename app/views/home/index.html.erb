@@ -1,0 +1,20 @@
+<h1>Welcome to My App</h1>
+
+<h2>Notifications</h2>
+<ul>
+  <% MyEngine::Notification.all.each do |notification| %>
+    <li>
+      <%= notification.message %>
+      <% unless notification.read? %>
+        <%= button_to "Mark as Read", my_engine.mark_as_read_notification_path(notification), method: :put %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Payments</h2>
+<%= link_to "Make a payment", my_engine.payments_path %>
+
+<h2>
+<%= link_to "View Articles", my_demo_engine.articles_path, style: "text-decoration: none" %>
+</h2>
